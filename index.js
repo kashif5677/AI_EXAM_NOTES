@@ -1,15 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
+import connectDB from "./utils/connectDB.js";
+dotenv.config()
 
-const PORT = process.env.PORT || 5000
+console.log(process.env.MONGO_URL)
+console.log(process.env.PORT)
 
-// const app = express()
+const app = express()
+const port = process.env.PORT || 8000
 
 app.get("/", (req, res) => {
     res.json({
-        message: "Hello World"
+        message: "Exam notes"
     })
 })
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+connectDB()
+app.listen(port, () => {
+    console.log(`server is running on ${port}`);
 })
